@@ -29,6 +29,15 @@ export default function ParticleBackground() {
         this.opacity = Math.random() * 0.4 + 0.1
         this.pulse = Math.random() * Math.PI * 2
         this.pulseSpeed = Math.random() * 0.02 + 0.005
+        
+        // Brand colors for particles
+        const colors = [
+          '196, 40, 40',   // primary-red
+          '114, 196, 191', // teal
+          '173, 155, 203', // purple
+          '153, 153, 153'  // mid-gray
+        ]
+        this.colorBase = colors[Math.floor(Math.random() * colors.length)]
       }
       update() {
         this.x += this.speedX
@@ -43,7 +52,7 @@ export default function ParticleBackground() {
         const pulsedOpacity = this.opacity + Math.sin(this.pulse) * 0.1
         ctx.beginPath()
         ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2)
-        ctx.fillStyle = `rgba(255, 255, 255, ${Math.max(0, pulsedOpacity)})`
+        ctx.fillStyle = `rgba(${this.colorBase}, ${Math.max(0, pulsedOpacity)})`
         ctx.fill()
       }
     }
@@ -69,9 +78,9 @@ export default function ParticleBackground() {
           const dy = particles[i].y - particles[j].y
           const dist = Math.sqrt(dx * dx + dy * dy)
           if (dist < connectDistance) {
-            const alpha = (1 - dist / connectDistance) * 0.08
+            const alpha = (1 - dist / connectDistance) * 0.05
             ctx.beginPath()
-            ctx.strokeStyle = `rgba(255, 255, 255, ${alpha})`
+            ctx.strokeStyle = `rgba(153, 153, 153, ${alpha})`
             ctx.lineWidth = 0.5
             ctx.moveTo(particles[i].x, particles[i].y)
             ctx.lineTo(particles[j].x, particles[j].y)

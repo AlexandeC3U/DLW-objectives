@@ -21,9 +21,9 @@
   --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   --transition-spring: 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 
-  --glass-bg: rgba(255, 255, 255, 0.75);
-  --glass-border: rgba(255, 255, 255, 0.4);
-  --glass-blur: blur(20px);
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.9);
+  --glass-blur: blur(24px);
 }
 
 * {
@@ -34,7 +34,7 @@
 
 body {
   font-family: var(--font-family);
-  background: linear-gradient(135deg, #1a0a0e 0%, #2d1520 20%, #1e0a14 40%, #0f1923 60%, #0a1628 80%, #141028 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e2e8ec 50%, #fdfbfb 100%);
   background-attachment: fixed;
   color: var(--text-gray);
   line-height: 1.6;
@@ -525,9 +525,9 @@ body {
 .modal-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(10, 5, 15, 0.6);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(240, 244, 248, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1004,15 +1004,15 @@ body {
   justify-content: center;
   height: 100vh;
   font-size: 18px;
-  color: rgba(255, 255, 255, 0.6);
+  color: var(--text-gray);
   gap: 14px;
-  background: linear-gradient(135deg, #1a0a0e 0%, #2d1520 20%, #1e0a14 40%, #0f1923 60%, #0a1628 80%, #141028 100%);
+  background: linear-gradient(135deg, #f8f9fa 0%, #e2e8ec 50%, #fdfbfb 100%);
 }
 
 .loading-spinner {
   width: 24px;
   height: 24px;
-  border: 3px solid rgba(255, 255, 255, 0.15);
+  border: 3px solid rgba(196, 40, 40, 0.15);
   border-top-color: var(--primary-red);
   border-radius: 50%;
   animation: spin 0.8s linear infinite;
