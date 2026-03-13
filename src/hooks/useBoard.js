@@ -1,36 +1,43 @@
 import { useState, useEffect, useCallback } from 'react'
+import { ref, onValue, set } from 'firebase/database'
+import { db } from '../firebase'
 import yaml from 'js-yaml'
 
-const STORAGE_KEY = 'road2supremeleader-data'
+const DB_REF = ref(db, 'board')
 
 export function useBoard() {
   const [data, setData] = useState(null)
   const [loading, setLoading] = useState(true)
 
+  // Subscribe to Firebase — all changes from any user show up in real time
   useEffect(() => {
-    const saved = localStorage.getItem(STORAGE_KEY)
-    if (saved) {
-      try {
-        setData(JSON.parse(saved))
+    const unsubscribe = onValue(DB_REF, (snapshot) => {
+      const val = snapshot.val()
+      if (val) {
+        setData(val)
         setLoading(false)
-        return
-      } catch { /* fall through to YAML */ }
-    }
-
-    fetch('/data.yaml')
-      .then(res => res.text())
-      .then(text => {
-        const parsed = yaml.load(text)
-        setData(parsed)
-        setLoading(false)
-      })
+      } else {
+        // DB is empty — seed it from data.yaml
+        fetch('/data.yaml')
+          .then(res => res.text())
+          .then(text => {
+            const parsed = yaml.load(text)
+            set(DB_REF, parsed)
+            // onValue will fire again once seed is written
+          })
+      }
+    })
+    return () => unsubscribe()
   }, [])
 
-  useEffect(() => {
-    if (data) {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(data))
-    }
-  }, [data])
+  // Helper: write the full board to Firebase
+  const persist = useCallback((updater) => {
+    setData(prev => {
+      const next = updater(prev)
+      set(DB_REF, next)
+      return next
+    })
+  }, [])
 
   const getAllMilestones = useCallback(() => {
     if (!data) return []
@@ -44,7 +51,7 @@ export function useBoard() {
   }, [getAllMilestones])
 
   const moveMilestone = useCallback((milestoneId, newStatus) => {
-    setData(prev => ({
+    persist(prev => ({
       ...prev,
       objectives: prev.objectives.map(obj => ({
         ...obj,
@@ -53,7 +60,7 @@ export function useBoard() {
         )
       }))
     }))
-  }, [])
+  }, [persist])
 
   const addNote = useCallback((milestoneId, text) => {
     const note = {
@@ -61,7 +68,7 @@ export function useBoard() {
       text,
       timestamp: new Date().toISOString()
     }
-    setData(prev => ({
+    persist(prev => ({
       ...prev,
       objectives: prev.objectives.map(obj => ({
         ...obj,
@@ -72,10 +79,10 @@ export function useBoard() {
         )
       }))
     }))
-  }, [])
+  }, [persist])
 
   const deleteNote = useCallback((milestoneId, noteId) => {
-    setData(prev => ({
+    persist(prev => ({
       ...prev,
       objectives: prev.objectives.map(obj => ({
         ...obj,
@@ -86,7 +93,7 @@ export function useBoard() {
         )
       }))
     }))
-  }, [])
+  }, [persist])
 
   const getProgress = useCallback((objectiveId) => {
     if (!data) return { done: 0, total: 0, percent: 0 }
@@ -98,14 +105,13 @@ export function useBoard() {
   }, [data])
 
   const resetData = useCallback(() => {
-    localStorage.removeItem(STORAGE_KEY)
     setLoading(true)
     fetch('/data.yaml')
       .then(res => res.text())
       .then(text => {
         const parsed = yaml.load(text)
-        setData(parsed)
-        setLoading(false)
+        set(DB_REF, parsed)
+        // onValue listener will update state automatically
       })
   }, [])
 

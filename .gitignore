@@ -1,5 +1,10 @@
 #ignore dist and node_modules folders
 node_modules/
 
+#ignore env files
+.env
+.env.local
+.env.production
+
 #ignore markdowns
 *.md
