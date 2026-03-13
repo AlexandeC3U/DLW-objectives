@@ -1,0 +1,121 @@
+title: "Objectives 2026"
+subtitle: "Road to Supreme Leader"
+
+columns:
+  - id: not-started
+    title: "Not Started"
+  - id: in-progress
+    title: "In Progress"
+  - id: done
+    title: "Done"
+
+objectives:
+  - id: obj-1
+    title: "SAP DM Automation & Edge Expert"
+    subtitle: "Technical Mastery"
+    description: "Become the designated Go-To Person for SAP DM automation and Edge topics. Elevate technical skills from operational to advanced architecture levels, specifically focusing on shopfloor connectivity and containerized deployments."
+    color: "#c42828"
+    milestones:
+      - id: m1-1
+        title: "Advanced Edge Deployment"
+        description: "Master K8s/K3s edge deployment patterns for SAP DM."
+        status: not-started
+        notes: []
+      - id: m1-2
+        title: "Connectivity Proficiency"
+        description: "Successfully configure Production Connectors for complex shopfloor systems using OPCUA, OPCDA and MQTT."
+        status: not-started
+        notes: []
+      - id: m1-3
+        title: "Asset Development"
+        description: "Develop modular, reusable building blocks (IP) for SAP DM (e.g., buffering scripts) to reduce dependency on third parties."
+        status: not-started
+        notes: []
+
+  - id: obj-2
+    title: "SAP Cloud Ecosystem Foundation"
+    subtitle: "Broadening Horizons"
+    description: "Strengthen the foundational knowledge of the wider SAP ecosystem to better contextualize SAP DM implementations. Focus on the nuances between Public and Private cloud offerings and core SAP technologies."
+    color: "#941914"
+    milestones:
+      - id: m2-1
+        title: "Cloud Fluency"
+        description: "Complete SAP Public Cloud learning tracks to clearly articulate What, How, and Why of SAP Public vs. Private Cloud."
+        status: not-started
+        notes: []
+      - id: m2-2
+        title: "Certification"
+        description: "Reactivate expired certificates or obtain new relevant ones (e.g., Litmus, specific SAP Cloud certs)."
+        status: not-started
+        notes: []
+      - id: m2-3
+        title: "Basics"
+        description: "Complete at least 2 internal SAP basic learning courses."
+        status: not-started
+        notes: []
+
+  - id: obj-3
+    title: "Innovation Leadership"
+    subtitle: "AI & Automation"
+    description: "Proactively integrate cutting-edge technologies into daily workflows. Move beyond theory to practical application of Generative AI and automated agents to boost team efficiency."
+    color: "#72c4bf"
+    milestones:
+      - id: m3-1
+        title: "AI Workflows"
+        description: "Design and implement 2 functional AI flows within the team or internal projects to demonstrate efficiency gains."
+        status: not-started
+        notes: []
+      - id: m3-2
+        title: "Riding the Wave"
+        description: "Maintain active research into GenAI Agents and Skills to identify future business opportunities."
+        status: not-started
+        notes: []
+      - id: m3-3
+        title: "Project Vibes"
+        description: "Successfully apply Vibecoding principles to a proof-of-concept (POD 2.0)."
+        status: not-started
+        notes: []
+
+  - id: obj-4
+    title: "Knowledge Sharing"
+    subtitle: "Team Enablement"
+    description: "Transform individual learnings into team assets. Ensure that personal growth translates into wider team capability through structured sharing sessions and documentation improvements."
+    color: "#ad9bcb"
+    milestones:
+      - id: m4-1
+        title: "Lunch & Learn #1"
+        description: "Present Custom Gateway Project (Conduit Edge) - demonstrating architecture and potential reuse."
+        status: not-started
+        notes: []
+      - id: m4-2
+        title: "Lunch & Learn #2"
+        description: "Present POD 2.0: Vibecoding & Building with AI - showcasing practical AI application in dev workflows."
+        status: not-started
+        notes: []
+      - id: m4-3
+        title: "Documentation"
+        description: "Revamp a section of internal documentation to be a Single Source of Truth (potentially adopting a GitOps approach)."
+        status: not-started
+        notes: []
+
+  - id: obj-5
+    title: "Customer Success & Delivery Excellence"
+    subtitle: "Delivery & Leadership"
+    description: "Ensure consistent high-quality delivery for key accounts while taking on a more senior/driving role within project teams."
+    color: "#ef463c"
+    milestones:
+      - id: m5-1
+        title: "Utilization"
+        description: "Maintain high utilization by prioritizing key accounts (e.g., DCSN & MILC)."
+        status: not-started
+        notes: []
+      - id: m5-2
+        title: "Project Leadership"
+        description: "Act as the driving force for realization within current domains, ensuring full coverage and supporting junior colleagues."
+        status: not-started
+        notes: []
+      - id: m5-3
+        title: "Client Feedback"
+        description: "Secure positive feedback/references from at least 2 distinct project stakeholders."
+        status: not-started
+        notes: []
